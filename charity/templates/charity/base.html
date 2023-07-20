@@ -1,0 +1,347 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wazito  Foundation
+    </title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body>
+    <div class="fixed-top">
+        <header>
+            <div class="container">
+                <nav class="navbar navbar-expand-lg navbar-dark">
+                    <a class="navbar-brand" href="#home">Hazina  Foundation</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="#home">Home <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#donation">Donations</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#mission-id">Missions</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#about">About</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#contact">Contact</a>
+                            </li>      
+                            <form class="d-flex" id="authstyle">
+                                {% if user.is_authenticated %}
+                                <a href="{% url 'profile' %}" class="btn" style="color: white; background-color: #fd5e14;"type="submit" id="header-links"> Profile </a>
+                                  <a href="{% url 'logout' %}" class="btn" style="color: white; background-color: #fd5e14;"type="submit" id="header-links"> Logout </a>
+                                {% else %}
+                                  <a href="{% url 'register' %}" class="btn" style="color: white; background-color: #fd5e14;"type="submit" id="header-links"> Create Account </a>
+                                  <a href="{% url 'login' %}" class="btn" style="color: white; background-color: #fd5e14; margin-left: 10px; "type="submit" id="header-links">Log In</a>
+                                {% endif %}
+                                </form>
+                            </div>
+                          </div>
+                      </nav>
+                  
+                        <div>
+                          <div class="container">
+                            {% if messages %}
+                            {% for message in messages %}
+                              <div class="alert alert-{{message.tags}}">{{message}}</div>
+                            {% endfor %}
+                          {% endif %}
+                          </div>
+                          {% block content %}
+                          {% endblock content %}
+                        </div>
+                        </ul>
+                    </div> 
+                </nav>
+            </div>
+        </header>
+
+        <div class="cont-sec">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <p>Contact No : <a href="tel: +9198659****59">+2547978***676</a></p>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="social">
+                            <a href="#"><img src="{% static 'img/icons/facebook.png' %}" alt="facebook"></a>
+                            <a href="#"><img src="{% static 'img/icons/instagram.png' %}" alt="inatagram"></a>
+                            <a href="#"><img src="{% static 'img/icons/youtube.png' %}" alt="youtube"></a>
+                            <a href="#"><img src="{% static 'img/icons/linkedin.png' %}" alt="linkedin"></a>
+                            <a href="#"><img src="{% static 'img/icons/gmail.png' %}" alt="gnail"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <section class="home-sec" id="home">
+        <div class="container">
+            <div class="home-content">
+                <div class="row">
+                    <div class="col-lg-6 align-item-center">
+                        <div class="home-info">
+                            <h1>Alone we can do little, together we can do so much</h1>
+                            <h2>We <span>Hazina foundation</span> manage excess for needy peoples</h2>
+                            <p>Make a meaningful impact by supporting local children's homes and
+                                elderly care facilities through your generous donations.</p>
+                            <div class="buttons">
+                                <a href="#contact" class="btn1">Donate now</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 order-first order-lg-last">
+                        <div class="img-sec">
+                            <img src="{% static 'img/img-1.png' %}" alt="home-image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="don-sec" id="donation">
+        <div class="container">
+            <div class="heading">
+                <h2>We Manage Donations like..</h2>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="don-box">
+                        <img src="{% static 'img/don/clothing.png' %}" alt="img">
+                        <h3>Clothes</h3>
+                        <p>Donate the clothes you have .</p>
+                        <a href="#contact" class="btn1">Donate Now</a>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="don-box">
+                        <img src="{% static 'img/don/sneakers.png' %}" alt="img">
+                        <h3>Footware</h3>
+                        <p>we make sure that childrens don't walk barefooted donate the .</p>
+                        <a href="#contact" class="btn1">Donate Now</a>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="don-box">
+                        <img src="{% static 'img/don/salary.png' %}" alt="img">
+                        <h3>Fund</h3>
+                        <p>that little fund matters.</p>
+                        <a href="#contact" class="btn1">Donate Now</a>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="don-box">
+                        <img src="{% static 'img/don/gadgets.png' %}" alt="img">
+                        <h3>Gadgets</h3>
+                        <p>donate gadget such as phones etc.</p>
+                        <a href="#contact" class="btn1">Donate Now</a>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="don-box">
+                        <img src="{% static 'img/don/book.png' %}" alt="img">
+                        <h3>Stationary</h3>
+                        <p>donate a stationery .</p>
+                        <a href="#contact" class="btn1">Donate Now</a>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="don-box">
+                        <img src="{% static 'img/don/shopping-bag.png' %}" alt="img">
+                        <h3>Food</h3>
+                        <p>donate your food</p>
+                        <a href="#contact" class="btn1">Donate Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="mission" id="mission-id">
+        <div class="container">
+            <div class="heading">
+                <h2>Our Missions</h2>
+                <p>Our main ambition is to deliver <span>Donations</span> to needy Peoples and help the starving community</p>
+            </div>
+            <div class="gallery-sec">
+                <div class="container">
+                    <div class="image-container">
+                        <div class="image"><img src="{% static 'img/miss/1.jpg' %}" alt="img"></div>
+                        <div class="image"><img src="{% static 'img/miss/drive.jpg' %}" alt="img"></div>
+                        <div class="image"><img src="{% static 'img/miss/donate.jpg' %}" alt="img"></div>
+                        <div class="image"><img src="{% static 'img/miss/4.jpg'%}" alt="img"></div>
+                        <div class="image"><img src="{% static 'img/miss/5.jpg' %}" alt="img"></div>
+                        <div class="image"><img src="{% static 'img/miss/6.jpg' %}" alt="img"></div>
+                    </div>
+                </div>
+                <div class="pop-image">
+                    <span>&times;</span>
+                    <img src="{% static 'img/gallery/1.jpg' %}" alt="gallery-img">
+                </div>
+                </di v>
+            </div>
+    </section>
+
+    <section class="about-sec" id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 about-img">
+                    <img src="{% static 'img/img-2.jpeg' %}" alt="about">
+                </div>
+                <div class="col-lg-8 order-first order-lg-last">
+                    <div class="heading">
+                        <h2>What We Do & Why We Do</h2>
+                    </div>
+                    <p> 
+                        Our platform connects organizations in need with compassionate donors to address resource gaps and make a meaningful difference in our community. 
+                        We believe in the power of giving back and providing practical solutions to support organizations in meeting the needs of the people they serve. 
+                        By facilitating access to vital resources, we empower organizations to enhance their programs and positively impact lives. 
+                        Together, we can create a more compassionate and supportive society,
+                    </p>
+                    <p>Your
+                        kindness helps create a sense of belonging and care for those who can
+                        benefit the most. Join us in this fulfilling journey of providing
+                        nourishment and brightening lives. Together, we can make a lasting
+                        impact on the lives of those who cherish every meal shared.
+                        Bridge the resource gaps within your organization and extend your reach
+                        by partnering with us. We understand the challenges you face in
+                        providing essential services to those in need. By joining our platform,
+                        you gain access to a vibrant community of like-minded individuals,
+                        businesses, and organizations who are committed to making a positive
+                        impact. Together, we can amplify your organization's impact by
+                        connecting you with generous donors who are eager to support your cause.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <!-- Contact Section -->
+        <section class="contact-section" id="contact">
+            <div class="container">
+                <div class="heading">
+                    <h2>Donations</h2>
+                    <p>Fill this form, our team will collect your <span>Donation</span></span> from your place.</p>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 mt-5">
+                        <form class="contact-form" action="" method="POST">
+                            {% csrf_token %} 
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="col-lg-12">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" placeholder="Your Name">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" placeholder="Mobile.">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <div class="form-group">
+                                                    <select name="donation" id="donation">
+                                                        <option value="">Choose Donation or Wastage</option>
+                                                        <option value="food">Food</option>
+                                                        <option value="clothes">Clothes</option>
+                                                        <option value="footware">Footware</option>
+                                                        <option value="books">Books</option>
+                                                        <option value="fund">Fund</option>
+                                                        <option value="gadget">Ele. Gadgets</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" placeholder="Address">
+                                            </div>
+                                            <div class="form-group">
+                                                <textarea class="form-control" name="text" id="" cols="90" rows="1" placeholder="Message"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 mt-3">
+                                            <button type='submit' class="btn">Submit Details</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    <footer > 
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-4">
+                    <div class="col-one">
+                        <h4>Wazito Convent foundation</h4>
+                        <p>Address : 3, Near Aguins, Westland, Nairobi 440000 </p>
+                        <p>Contact No : <a href="tel: +254 98659****59">+2547978***676</a></p>
+                        <p>Email : <a href="wazitofoundation@gmail.com">wazitofoundation@gmail.com</a></p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="col-two">
+                        <h4>Important Links</h4>
+                        <ul>
+                            <li><a href="#home">Home</a></li>
+                            <li><a href="#donation">Donations</a></li>
+                            <li><a href="#mission-id">Missions</a></li>
+                            <li><a href="#about">About us</a></li>
+                            <li><a href="#contact">Contact us</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="col-one">
+                        <h4>Social Media</h4>
+                        <div class="social">
+                            <a href="#"><img src="{% static 'img/icons/facebook.png' %}" alt="facebook"></a>
+                            <a href="#"><img src="{% static 'img/icons/instagram.png' %}" alt="inatagram"></a>
+                            <a href="#"><img src="{% static 'img/icons/youtube.png' %}" alt="youtube"></a>
+                            <a href="#"><img src="{% static 'img/icons/linkedin.png' %}" alt="linkedin"></a>
+                            <a href="#"><img src="{% static 'img/icons/gmail.png' %}" alt="gnail"></a>
+                        </div>
+                        <p>Copyright &copy; 2023 | All Right Reserved</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="static js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
