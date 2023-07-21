@@ -3,7 +3,30 @@
 from django.db import models
 
 
+class Donations(models.Model):
+    """Model for  donations."""
 
+    donor_name = models.CharField(max_length=255)
+    donor_address = models.CharField(max_length=255)
+    donor_Email = models.EmailField(blank = True, null=True)
+    donor_mobile = models.CharField(max_length=20)
+    Donation_type = models.CharField(max_length=255)
+
+    request = models.TextField(blank = True, null=True)
+    
+    accepted = models.BooleanField(default=False)
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    
+    
+    category = models.ManyToManyField('Category', related_name='item')
+
+
+    def __str__(self):
+        return self.donor_name
+
+    class Meta:
+        ordering = ["-created_at"] 
 
 
 
