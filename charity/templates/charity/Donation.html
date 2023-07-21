@@ -1,0 +1,78 @@
+{% extends 'charity/base.html' %}
+{% include 'charity/index.html'%}
+{%block content%}
+<section class="contact-section" id="contact"  name="contact">
+    <div class="container">
+
+        {% if messages %}
+        <div class="card notification-card notification-invitation">
+            <div class="card-body">
+                {% for message in messages %}
+                <div class="card-title">{{message}} </div>
+                {% endfor %}
+            </div>
+        </div> 
+      {% endif %}
+    
+        <div class="heading">
+            <h2>Donate With Us</h2>
+            <p>Fill this form, our team will collect your <span>Donation</span> from your place.</p>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 mt-5">
+                <form class="contact-form" method='POST' action="{% url 'Donation' %}">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="col-lg-12">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="Your Name"  name="fname">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="Mobile No.   (07********)"  name="mobile">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="form-group">
+                                            <select name="donation" id="donation">
+                                                <option value="">Choose Donation or Wastage</option>
+                                                <option value="food">Food</option>
+                                                <option value="clothes">Clothes</option>
+                                                <option value="footware">Footware</option>
+                                                <option value="books">Books</option>
+                                                <option value="fund">Fund</option>
+                                                <option value="gadget">Gadgets</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="Enter Your Address location" name="address">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="Enter You Email." name="Email">
+                                    </div>
+                                    <div class="form-group">
+                                        <textarea class="form-control" name="text"  cols="90" rows="1" placeholder="Message" ></textarea>
+                                    </div>
+                                    
+                                </div>
+                                <div class="col-md-12 mt-3">
+                                    <!--<a  href="#" class="btn1 mt-5" onclick="submitForm()">Submit Details</a>-->
+                                    <button class= "btn btn-secondary"> Submit Details</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content%}
